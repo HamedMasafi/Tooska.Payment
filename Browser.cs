@@ -59,11 +59,24 @@ public struct CallUrlResult
 
 public static class Opener
 {
+    public static async Task<CallUrlResult> Open(string url, string data)
+    {
+        HttpClient _client = new();
+
+        var result = await _client.PostAsync(url, new StringContent(data));
+
+        return new CallUrlResult()
+        {
+            Code = result.StatusCode,
+            Content = await result.Content.ReadAsStringAsync()
+        };
+    }
+    
     public static async Task<CallUrlResult> Open(string url, NameValueCollection data)
     {
-      HttpClient _client = new();
+        HttpClient _client = new();
 
-      var json = JsonSerializer.Serialize(data);
+        var json = JsonSerializer.Serialize(data);
 
         var result = await _client.PostAsync(url, new StringContent(json));
 

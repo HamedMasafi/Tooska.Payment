@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace Tooska.Payment
 {
@@ -12,10 +13,15 @@ namespace Tooska.Payment
             var f = new PaymentForm
             {
                 Method = PaymentForm.MethodType.Get,
-                ActionUrl = Options.Payment.Global.DashboardUrl,
+                ActionUrl = Tooska.Options.Payment.Global.DashboardUrl,
                 ButtonText = "بازگشت به صقحه خانگی"
             };
             return f;
+        }
+
+        public override bool VerifyTransaction(ref T t, HttpContext context)
+        {
+            throw new NotImplementedException();
         }
 
         public override int GetTransactionId()
@@ -26,11 +32,6 @@ namespace Tooska.Payment
         public override void InitTransaction(ref T t)
         {
             t.Status = TransactionStatus.Successful;
-        }
-
-        public override bool VerifyTransaction(ref T t)
-        {
-            throw new NotImplementedException();
         }
 
     }

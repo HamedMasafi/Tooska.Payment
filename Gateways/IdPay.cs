@@ -56,7 +56,7 @@ public class IdPay<T> : AbstractPaymentGateway<T> where T : AbstractTransaction
         }
     }
 
-    public override bool VerifyTransaction(ref T t, HttpContext context)
+    public override bool VerifyTransaction(ref T t, Microsoft.AspNetCore.Http.HttpContext context)
     {
         var status = context.Request.Form["status"];
         var trackId = context.Request.Form["track_id"];

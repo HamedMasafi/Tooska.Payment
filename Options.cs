@@ -1,20 +1,25 @@
-namespace Tooska;
+using Microsoft.Extensions.Primitives;
 
-public class Options
+namespace Tooska.Options.Payment
 {
-    public class Payment
+    public class Global
     {
-        public class Global
-        {
-            public static string CallbackUrl { get; set; } = "";
-            public static string DashboardUrl { get; set; }
-        }
+        public static string CallbackUrl { get; set; } = "";
+        public static string DashboardUrl { get; set; }
+        public static Func<string, string> Getter { get; set; }
+    }
 
-        public class Behpardakht
-        {
-            public static long terminalId;
-            public static string userName;
-            public static string userPassword;
-        }
+    public class Behpardakht
+    {
+        public static long terminalId{ get; set; }
+        public static string userName{ get; set; }
+        public static string userPassword{ get; set; }
+    }
+
+    public class Pasargad
+    {
+        public static string MerchantCode { get; set; }
+        public static string TerminalCode { get; set; }
+        public static string PrivateKey { get; set; }        
     }
 }

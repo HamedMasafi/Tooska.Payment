@@ -26,6 +26,11 @@ namespace Tooska.Payment
         public string ActionUrl { get; set; }
         public string ButtonText { get; set; }
         public Dictionary<string, object> Data{ get; set; }
+
+        public void AddKey(string name, string value)
+        {
+            Data.Add(name, value);
+        }
     }
 
 }

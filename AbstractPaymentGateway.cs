@@ -11,7 +11,7 @@ namespace Tooska.Payment
 {
     public abstract class AbstractPaymentGateway<T> where T : AbstractTransaction
     {
-        public string CallbackUrl { get; set; }
+        protected string CallbackUrl { get; set; }
         public T Transaction { get; set; }
         public string Message { get; protected set; }
 
@@ -21,7 +21,7 @@ namespace Tooska.Payment
             ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, cert, chain, sslPolicyErrors) => true;
 
-            CallbackUrl = string.Format(Options.Payment.Global.CallbackUrl, GetType().Name);
+            CallbackUrl = string.Format(Tooska.Options.Payment.Global.CallbackUrl, GetType().Name);
             /*ServicePointManager.ServerCertificateValidationCallback +=
             delegate (
                 Object sender1,
