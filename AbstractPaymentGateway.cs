@@ -1,11 +1,4 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
 using System.Net;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using Microsoft.AspNetCore.Http;
 
 namespace Tooska.Payment
 {
@@ -37,7 +30,7 @@ namespace Tooska.Payment
 
         public abstract void InitTransaction(ref T t);
 
-        public abstract bool VerifyTransaction(ref T t, HttpContext context);
+        public abstract bool VerifyTransaction(ref T t);
 
         public abstract int GetTransactionId();
         

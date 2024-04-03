@@ -1,7 +1,6 @@
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.AspNetCore.Http;
 
 namespace Tooska.Payment.Gateways;
 
@@ -63,7 +62,7 @@ public class Pasargad<T> : AbstractPaymentGateway<T> where T : AbstractTransacti
         var r = Opener.Open("https://pep.shaparak.ir/VerifyPayment.aspx", data).Result;
     }
 
-    public override bool VerifyTransaction(ref T t, HttpContext context)
+    public override bool VerifyTransaction(ref T t)
     {
         throw new NotImplementedException();
     }
@@ -72,10 +71,4 @@ public class Pasargad<T> : AbstractPaymentGateway<T> where T : AbstractTransacti
     {
         throw new NotImplementedException();
     }
-
-    public void Test(HttpContext httpContext)
-    {
-        throw new NotImplementedException();
-    }
-    
 }

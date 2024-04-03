@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Primitives;
-
 namespace Tooska.Options.Payment
 {
     public class Global

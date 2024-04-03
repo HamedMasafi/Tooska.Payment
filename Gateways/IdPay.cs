@@ -2,7 +2,6 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http;
 
 namespace Tooska.Payment.Gateways;
 
@@ -56,15 +55,15 @@ public class IdPay<T> : AbstractPaymentGateway<T> where T : AbstractTransaction
         }
     }
 
-    public override bool VerifyTransaction(ref T t, Microsoft.AspNetCore.Http.HttpContext context)
+    public override bool VerifyTransaction(ref T t)
     {
-        var status = context.Request.Form["status"];
-        var trackId = context.Request.Form["track_id"];
-        var id = context.Request.Form["id"];
-        var orderId = context.Request.Form["order_id"];
-        var amount = context.Request.Form["amount"];
-        var cardNo = context.Request.Form["card_no"];
-        var hashedCardNo = context.Request.Form["hashed_card_no"];
+        var status = Options.Payment.Global.Getter("status");
+        var trackId =  Options.Payment.Global.Getter("track_id");
+        var id =  Options.Payment.Global.Getter("id");
+        var orderId =  Options.Payment.Global.Getter("order_id");
+        var amount =  Options.Payment.Global.Getter("amount");
+        var cardNo =  Options.Payment.Global.Getter("card_no");
+        var hashedCardNo =  Options.Payment.Global.Getter("hashed_card_no");
 
         t.CardNumber = hashedCardNo;
         throw new NotImplementedException();

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-
-namespace Tooska.Payment
+﻿namespace Tooska.Payment
 {
     public class CustomTransaction<T> : AbstractPaymentGateway<T> where T : AbstractTransaction
     {
@@ -19,7 +13,7 @@ namespace Tooska.Payment
             return f;
         }
 
-        public override bool VerifyTransaction(ref T t, HttpContext context)
+        public override bool VerifyTransaction(ref T t)
         {
             throw new NotImplementedException();
         }

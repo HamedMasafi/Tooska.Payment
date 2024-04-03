@@ -13,8 +13,17 @@ public class GatewaysPool<T> where T : AbstractTransaction
         _gateways.Add(key, gateway);
     }
 
+    public AbstractPaymentGateway<T> Gateway(int index)
+    {
+        return _gateways.ElementAt(index).Value;
+    }
+    
     public AbstractPaymentGateway<T> Gateway(string name)
     {
         return _gateways[name];
     }
+
+    public int Count => _gateways.Count;
+    
+    
 }
